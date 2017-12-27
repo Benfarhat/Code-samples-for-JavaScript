@@ -16,8 +16,6 @@ This is a simple directory of implementations of certain Javascript functions, t
 
 ### importScripts with callback
 
-##importScripts
-
 ### Communication
 
 #### Brodcast Channel
