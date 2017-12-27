@@ -10,25 +10,25 @@ This is a simple directory of implementations of certain Javascript functions, t
 
 ## Web workers
 
-### Dedicated worker
-### Shared Worker
-### Inline Worker
+### [Dedicated worker](dist/webWorkers/dedicatedWorker)
+### [Shared Worker](dist/webWorkers/inlineWorker)
+### [Inline Worker](dist/webWorkers/sharedWorker)
 
-### importScripts with callback
+### [importScripts with callback](dist/webWorkers/importScripts-callback)
 
 ### Communication
 
-#### Brodcast Channel
+#### [Broadcast Channel](dist/webWorkers/communication/broadcastChannel)
 
-#### Message Channel
+#### [Message Channel](dist/webWorkers/communication/messageChannel)
 
 ### Shared memory
 
-#### SharedArrayBuffer
+#### [SharedArrayBuffer](dist/webWorkers/sharedMemory/sharedArrayBuffer)
 
-#### Deadlocks with SharedArrayBuffer 
+#### [Deadlocks with SharedArrayBuffer](dist/webWorkers/sharedMemory/sharedArrayBuffer-deadlocks)
 
-#### Atomics
+#### [Atomics](dist/webWorkers/sharedMemory/atomics)
 
 
 # Copyright
