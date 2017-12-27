@@ -1,0 +1,55 @@
+{
+  "name": "javascript_examples",
+  "version": "0.0.1",
+  "description": "Directory of implementations of some javascript features",
+  "main": "index.html",
+  "scripts": {
+    "build": "babel dist --out-dir transpiled --copy-files",
+    "lint": "eslint dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "babel": {
+    "presets": [
+      "babel-preset-env"
+    ],
+    "plugins": [],
+    "ignore": [
+      "index.test.js"
+    ]
+  },
+  "keywords": [
+    "javascript",
+    "workers",
+    "shared",
+    "memory",
+    "atomics",
+    "asynchronous",
+    "ajax",
+    "promise",
+    "async",
+    "await"
+  ],
+  "author": "Benfarhat Elyes <benfarhat.elyes@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.1.2",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.14.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
+    "mocha": "^4.0.1",
+    "nyc": "^11.4.1"
+  },
+  "dependencies": {}
+}

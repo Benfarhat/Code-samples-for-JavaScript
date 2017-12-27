@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "commonjs": true,
+    "worker": true,
+    "serviceworker": true,
+    "es6": true,
+  },
+  "plugins": [
+    "babel"
+  ],
+  "extends": "standard",
+  "rules": {
+    "strict": 0
+  },
+  "parserOptions": {
+   "ecmaVersion": 2017
+  },
+  # https://eslint.org/docs/user-guide/configuring.html#specifying-globals
+  "globals": {
+    "SharedArrayBuffer": false,
+    "Atomics": false
+  }
+}
