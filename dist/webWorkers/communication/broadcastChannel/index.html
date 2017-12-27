@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Broadcast Channel API</title>
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      body{
+        margin:0;
+        padding:0;
+      }
+      h1{
+        background-color: #007BA7;
+        color: #fff;
+        padding:8px 16px;
+        margin-top:0;
+      }
+      body > div, footer {
+        padding: 4px 16px;
+      }
+      textarea{
+        width:100%;
+        border:1px solid #007BA7;
+        padding:4px 8px;
+        min-height: 30em;
+      }
+
+    div.content{
+      padding:16px;
+    }
+    </style>
+</head>
+<body>
+  <h1>Broadcast Channel API</h1>
+  <div class="content">
+    <small><a href="reception1.html" target="_blank">reception1</a> - <a href="reception2.html" target="_blank">reception2</a> - <a href="reception3.html" target="_blank">reception31</a> - <a href="reception4.html" target="_blank">reception4</a></small>
+    <hr>
+    <h2>INDEX</h2>
+    <p style="color:#007BA7;">Message à envoyer vers le canal 1</p>
+    <input id="inputcanal1" style="width:50%;border:1px solid #007BA7;" placeholder="Votre message">
+    <button id="btncanal1" style="background-color:#007BA7;color:#fff;padding:4px 8px;border:none;">Envoyer</button>
+    <p style="color:#007BA7;">Message à envoyer vers le canal 2</p>
+    <input id="inputcanal2" style="width:50%;border:1px solid #007BA7;" placeholder="Votre message">
+    <button id="btncanal2" style="background-color:#007BA7;color:#fff;padding:4px 8px;border:none;">Envoyer</button>
+    <p>Canal 1 :</p>
+    <div id="msgcanal1" style="border:1px solid #007BA7;min-height:1em"></div>
+    <p>Canal 2 :</p>
+    <div id="msgcanal2" style="border:1px solid #007BA7;min-height:1em"></div>
+
+    <iframe style="width:47%;min-height:300px;margin-top:32px;border:1px solid #007BA7;" src="reception1.html"></iframe>
+    <iframe style="width:47%;min-height:300px;margin-top:32px;border:1px solid #007BA7;" src="reception2.html"></iframe>
+    <iframe style="width:47%;min-height:300px;margin-top:32px;border:1px solid #007BA7;" src="reception3.html"></iframe>
+    <iframe style="width:47%;min-height:300px;margin-top:32px;border:1px solid #007BA7;" src="reception4.html"></iframe>
+  </div> 
+      
+  <script src="script.js"></script> 
+</body>
+</html>

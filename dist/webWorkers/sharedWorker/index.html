@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta charset="utf-8">
+ <title>Shared Worker</title>
+ <style>
+  *{
+    box-sizing: border-box;
+  }
+  body{
+    margin:0;
+    padding:0;
+  }
+  h1{
+    background-color: #16a085;
+    color: #fff;
+    padding:8px 16px;
+    margin-top:0;
+  }
+  a{
+  	color:#16a085;
+  	text-decoration: none;
+  }
+  body > div, footer {
+    padding: 4px 16px;
+  }
+  div#content{
+  	padding: 8px 16px;
+  }
+  textarea{
+    width:100%;
+    border:1px solid #16a085;
+    padding:4px 8px;
+    min-height: 30em;
+  }
+ form div{margin-bottom: 16px;}
+ form input#pseudo{min-width: 300px;} 
+ form input#message{min-width: 600px;} 
+ textarea{
+ background: url(http://i.imgur.com/2cOaJ.png);
+ background-attachment: local;
+ background-repeat: no-repeat;
+ padding-left: 35px;
+ padding-top: 10px;
+ border-color:#16a085;
+ width:749px;
+ min-height:20em;
+ } 
+ input, textarea{
+ display:block
+ }
+ </style>
+ </head>
+ <body>
+ <h1>Simple Chat</h1>
+ <div id="content">
+ <span>Pour augmenter le nombre de connexion, Veuillez ouvrir plusieurs fois cette <a href="index.html" target="blank">page</a></span>
+
+<form>
+<span>Pseudonyme</span>
+<input type="text" id="pseudo">
+<span>Votre message</span>
+<input type="text" id="message">
+<span>Votre identifiant unique</span>
+<span id="uid"></span>
+
+<textarea id="textarea"></textarea>
+
+ 
+
+
+</form>
+      <span>Nombe de connexion: </span><span id="connection"></span>
+      <div>Attention, Des problèmes peuvent apparaitre avec Firefox qui crée parfois plusieurs Shared Workers (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1207778">Bug 1207778</a>)</div>
+  </div>
+  </body>
+  <script src="principal.js"></script>
+</html>

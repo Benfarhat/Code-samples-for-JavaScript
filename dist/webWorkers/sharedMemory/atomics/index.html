@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>atomics</title>
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      body{
+        margin:0;
+        padding:0;
+      }
+      h1{
+        background-color: #8e44ad;
+        color: #fff;
+        padding:8px 16px;
+        margin-top:0;
+      }
+      body > div, footer {
+        padding: 4px 16px;
+      }
+      textarea{
+        width:100%;
+        border:1px solid #8e44ad;
+        padding:4px 8px;
+        min-height: 30em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Atomics</h1>
+    <div>When memory is shared, multiple threads can read and write the same data in memory. Atomic operations make sure that predictable values are written and read, that operations are finished before the next operation starts and that operations are not interrupted.</div>
+    <div>
+      <textarea id="textarea"></textarea>
+    </div>
+  </body>
+  <script src="principal.js"></script>
+</html>

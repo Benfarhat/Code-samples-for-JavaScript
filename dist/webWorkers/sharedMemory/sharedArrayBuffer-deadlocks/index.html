@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Shared memory</title>
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      body{
+        margin:0;
+        padding:0;
+      }
+      h1{
+        background-color: #d35400;
+        color: #fff;
+        padding:8px 16px;
+        margin-top:0;
+      }
+      body > div, footer {
+        padding: 4px 16px;
+      }
+      textarea{
+        width:100%;
+        border:1px solid #d35400;
+        padding:4px 8px;
+        min-height: 28em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Shared memory - Applying a deadlock to the worker</h1>
+    <div>Shared memory can be created and updated simultaneously in workers or the main thread.</div>
+    <div>
+      <textarea id="textarea"></textarea>
+    </div>
+  </body>
+  <script src="principal.js"></script>
+</html>

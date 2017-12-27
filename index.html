@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sample Code Directory</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<style>
+html, body {
+  height: 100%;
+}
+body#main{
+  padding-top:50px;
+  overflow: hidden;
+}
+svg {
+  background: rgba(0,0,0,0);
+  font: 8em/1 Open Sans, Impact;
+  text-transform: uppercase;
+}
+svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.navbar {
+  border-radius: 0;
+}
+	</style>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+</head>
+<body id="main">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">JS Code</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="https://github.com/Benfarhat"><i class="fa fa-github"></i> Github</a></li>
+        <!--
+        <li><a href="#">More</a></li>
+        -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="fa fa-github"></i>  Web Worker <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="dist/webWorkers/dedicatedWorker/"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Multiple Dedicated Worker</a></li>
+            <li><a href="dist/webWorkers/sharedWorker/"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Shared Worker</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Nav header</li>
+            <li><a href="dist/webWorkers/importScripts-callback/"><i class="fa fa-bookmark-o" aria-hidden="true"></i> importScripts with callback</a></li>
+            <li><a href="dist/webWorkers/inlineWorker/"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Inline workers</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Communication</li>
+            <li><a href="dist/webWorkers/communication/broadcastChannel/"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Broadcast Channel</a></li>
+            <li><a href="dist/webWorkers/communication/messageChannel/"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Message Channel</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Shared memory</li>
+            <li><a href="dist/webWorkers/sharedMemory/sharedArrayBuffer/"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Shared Array Buffer</a></li>
+            <li><a href="dist/webWorkers/sharedMemory/sharedArrayBuffer-deadlocks/"><i class="fa fa-bookmark-o" aria-hidden="true"></i> deadlock</a></li>
+            <li><a href="dist/webWorkers/sharedMemory/atomics/"><i class="fa fa-bookmark-o" aria-hidden="true"></i> atomics</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="../navbar/">Default</a></li>
+        <li><a href="../navbar-static-top/">Static top</a></li>
+        <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+      </ul>
+    -->
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<iframe id="iframe" src="https://www.youtube.com/embed/RtU_mdL2vBM?autoplay=1&controls=0&rel=0&showinfo=0&iv_load_policy=3&cc_load_policy=0&cc_lang_pref=en&wmode=transparent&modestbranding=1&disablekb=1&enablejsapi=1&widgetid=1" style="width:100%;height:100%;" frameborder="0"></iframe>
+<script
+	src="https://code.jquery.com/jquery-2.2.4.min.js"
+	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+	crossorigin="anonymous"></script>
+<script 
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
+	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
+	crossorigin="anonymous"></script>
+<script>
+  var iframe = document.querySelector('iframe#iframe'),
+    baseURI = document.baseURI.split("?")[0],
+    redirectURL = document.baseURI.split("=")[1],
+    links = document.querySelectorAll('a'),
+    testRedirection = false,
+    redirection = false;
+
+  // Managing window refresh or URL direct access (with baseURL)
+  (redirectURL == '' || redirectURL == undefined) || links.forEach(function(current){
+    testRedirection = true
+    if(current.attributes.href.value == redirectURL){
+      iframe.src = baseURI + redirectURL;
+      changeUrl(current.text, baseURI + '?redirect=' + redirectURL);
+      redirection = true;
+    }
+  });
+  // if we have a wrong redirect URL, we sould sanitize document.baseURI 
+  if(testRedirection && !redirection){
+    changeUrl("JS Code", baseURI);
+  }
+
+  // Managing clinked link (with baseURI)
+  NodeList.prototype.addEventListener = function (event_name, callback, useCapture){
+    for (var i = 0; i < this.length; i++)
+    {
+      this[i].addEventListener(event_name, callback, useCapture);
+    }
+  };
+
+  // Nodelist.onclick
+  links.addEventListener('click', function (e)
+  {
+    let href = this.attributes.href.value;
+    e.preventDefault();
+    if(href != '' && href != '#' && !href.startsWith("http")) {
+      iframe.src = baseURI + href;
+      changeUrl(this.text, baseURI + '?display=' + href);
+    } else if(href.startsWith("http")) {
+      window.open(href, '_blank');
+    }
+  });
+
+ function changeUrl(title, url) {
+    if (typeof (history.pushState) != "undefined") {
+        var obj = { newTitle: title, newUrl: url };
+        history.pushState(obj, obj.newTitle, obj.newUrl);
+    }
+  };
+</script>
+</body>
+</html>

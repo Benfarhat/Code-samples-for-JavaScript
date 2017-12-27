@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dedicated Worker</title>
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      body{
+        margin:0;
+        padding:0;
+      }
+      h1{
+        background-color: #2980b9;
+        color: #fff;
+        padding:8px 16px;
+        margin-top:0;
+      }
+      body > div, footer {
+        padding: 4px 16px;
+      }
+      form{
+        border:1px solid #2980b9;
+        padding: 8px 16px;
+      }
+      input{
+        width:100%;
+        border:1px solid #3498db;
+        color:#3498db;
+        padding:4px 8px;
+      }
+      footer{
+        color:#c0392b;
+        font-size:0.8em;
+      }
+      #resultat1{
+        color:#16a085;
+      }
+      #resultat2{
+        color:#d35400;
+      }
+      pre, span#title_pre{
+        background-color:#fff;
+        border: 1px solid #ccc;
+        padding:4px 8px;
+        font-size:0.9em;
+        font-style: italic;
+      }
+      span{
+        padding:8px;
+        background-color:#bbb;
+        display:block;
+      }
+      hr{
+        border-top:1px solid #bbb;
+        border-bottom:none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dedicated Worker</h1>
+    <div>The principle is pretty simple, we send to the 2 workers the content of the input, for processing and returning from the first worker the inverted words and from the second words encoded in l33t format.</div>
+    <div>
+      <form>
+        <div>
+          <label for="monInput">Please provide some words: </label>    
+          <input type="text" id="monInput" value="" placeholder="Texte à envoyer au worker">
+        </div>
+      </form>
+      <span>Worker 1 response (reversing) - simulating a response after 0.5 second: </span><span id="resultat1"></span>
+      <br>
+      <span>Worker 2 response (1337 conversion) - simulating a response after 2.5 seconds: </span><span id="resultat2"></span>
+      <hr>
+      <span id="title_pre">worker source code (2 in 1)</span>
+      <pre>
+onmessage = function(e) {
+  console.log('Message reçu de la part du script principal');
+  // On simule une opération longue à exécuter (juste 1 seconde)
+  setTimeout(
+        function () {
+          switch(e.data[0]){
+            case "coucou":
+              // on va juste envoyer une réponse sans se soucier de ce qui a été envoyé
+              postMessage("Bonjour à toi script principal");
+              console.log('Une salutation a été envoyé vers le script principal')
+              break;
+            case "keyup":
+              // Ici le traitement se limitera a retourné le contenu inversé
+              postMessage(e.data[1].split("").reverse().join(""));
+              console.log('Le résultat du traitement a été transmis')
+              break;
+            default:
+              console.log('type de message reçu non prise en charge')
+          }
+        },
+        500
+    );
+}  </pre>
+    </div>
+    <hr>
+    <footer>Veuillez patienter 1 seconde (programmée) pour recevoir la réponse du worker</footer>
+  </body>
+  <script src="principal.js"></script>
+</html>

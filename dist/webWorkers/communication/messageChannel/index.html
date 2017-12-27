@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Channel messaging demo</title>
+    <meta charset="UTF-8">
+    <style>
+    body{
+      font-family: tahoma, verdana, arial;
+      font-size:0.8em;
+    }
+    h1{
+      /*font-size:1.2em;*/
+    }
+    input, textarea {
+      border:1px solid #16a085;
+      width:100%;
+    }
+    input[type=radio]{
+      width: auto;
+    }
+    form > fieldset{
+      display: block-inline;
+      width:45%;
+      border:1px solid #333;
+      background-color:#E1E1E1;
+      margin-bottom:16px;
+    }
+    form > fieldset ol {
+      padding: 0 16px;
+    }
+    form > fieldset li:not(:last-child) {
+      padding-bottom:4px;
+      margin-bottom:4px;
+      border-bottom:1px dotted #bbb;
+
+    }
+    label{
+      font-size: 1em;
+      display:block;
+      margin-bottom:4px;
+    }
+    label.radio{
+      display:inline-block;
+    }
+    form > fieldset > legend{
+      background-color: #333;
+      color:#fff;
+      padding:2px 12px; 
+    }
+    form{
+      display:flex;
+      /*flex-flow: row wrap;*/
+      justify-content: space-around;
+    }
+
+      *{
+        box-sizing: border-box;
+      }
+      body{
+        margin:0;
+        padding:0;
+      }
+      h1{
+        background-color: #333;
+        color: #fff;
+        padding:8px 16px;
+        margin-top:0;
+      }
+      body > div, footer {
+        padding: 4px 16px;
+      }
+      textarea{
+        width:100%;
+        border:1px solid #333;
+        padding:4px 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Channel messaging demo</h1>
+    <h2>Test de MessageChannel - Partie du canal: Port1</h2>
+    <p id="afficheMessages">Aucune transaction - total: 0 €</p>
+
+    <form id=paiement>
+      <fieldset>
+        <legend>Identité</legend>
+
+        <ol>
+          <li>
+            <label for=nom>Nom & Prénom</label>
+            <input id=nom name=nom type=text placeholder="Nom et Prénom" value=Anonyme required autofocus>
+          </li>
+          <li>
+            <label for=email>Adresse email</label>
+            <input id=email name=email type=email placeholder="nom@domaine.com" value=Anonyme@domain.com required>
+          </li>
+          <li>
+            <label for=telephone>Téléphone</label>
+            <input id=telephone name=telephone type=tel placeholder="00216222222" value=0033612345678 required>
+          </li>
+        </ol>
+      </fieldset>
+
+      <fieldset>
+        <legend>Adresse de livraison</legend>
+          <ol>
+            <li>
+              <label for=adresse>Adresse</label>
+              <textarea id=adresse name=adresse rows=5></textarea>
+            </li>
+            <li>
+              <label for=codepostal>Code postal</label>
+              <input id=codepostal name=codepostal type=text>
+            </li>
+              <li>
+              <label for=pays>Pays</label>
+              <input id=pays name=pays type=text>
+            </li>
+          </ol>
+        </fieldset>
+      <fieldset>
+        <legend>Informations CB</legend>
+        <ol>
+          <li>
+            <fieldset>
+              <legend>Type de carte bancaire</legend>
+                  <input id=visa name=type_de_carte type=radio>
+                  <label class=radio for=visa>VISA</label>
+                  <input id=electron name=type_de_carte type=radio>
+                  <label class=radio for=electron>Electron</label>
+                  <input id=mastercard name=type_de_carte type=radio>
+                  <label class=radio for=mastercard>Mastercard</label>
+            </fieldset>
+          </li>
+          <li>
+            <label for=numero_de_carte>Num de carte</label>
+            <input id=numero_de_carte name=numero_de_carte type=number>
+          </li>
+          <li>
+            <label for=securite>Code sécurité</label>
+            <input id=securite name=securite type=number>
+          </li>
+          <li>
+            <label for=nom_porteur>Nom du porteur</label>
+            <input id=nom_porteur name=nom_porteur type=text placeholder="Même nom que sur la carte">
+          </li>
+        </ol>
+      </fieldset>
+
+      <fieldset>
+        <legend>Confirmer</legend>
+        <div>Montant à payer: <input id=montant name=montant type=text  disabled></div>
+        <button type=submit id="achat" style="background-color:#16a085;color:#fff;padding:4px 8px;border:none;">J'achète !</button>
+      </fieldset>
+    </form>    
+
+    <iframe src="http://localhost/webworkers/messageChannel/index2.html" width='100%' height='300' style="border:1px solid #16a085;margin-top:8px;" sandbox="allow-scripts"></iframe>
+  </body>
+  <script src="script.js"></script>
+</html>
