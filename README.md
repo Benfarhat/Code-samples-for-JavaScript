@@ -2,6 +2,10 @@
 
 This is a simple directory of implementations of certain Javascript functions, the scripts are commented in english, but you may find some french words in the interface.
 
+# See it in action 
+
+[Demo](https://benfarhat.github.io/Code-samples-for-JavaScript/)
+
 # Content
 
 ## Web workers
