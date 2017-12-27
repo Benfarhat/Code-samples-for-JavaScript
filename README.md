@@ -12,7 +12,11 @@ This is a simple directory of implementations of certain Javascript functions, t
 
 ### Dedicated worker
 ### Shared Worker
-### Inline WorkerimportScripts
+### Inline Worker
+
+### importScripts with callback
+
+##importScripts
 
 ### Communication
 
