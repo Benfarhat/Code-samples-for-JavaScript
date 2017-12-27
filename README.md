@@ -12,6 +12,7 @@ This is a simple directory of implementations of certain Javascript functions, t
 
 ### [Dedicated worker](dist/webWorkers/dedicatedWorker)
 ### [Shared Worker](dist/webWorkers/inlineWorker)
+Work fine with Google Chrome - Firefox create multiple instance of sharedworker [Bug 1207778](https://bugzilla.mozilla.org/show_bug.cgi?id=1207778)
 ### [Inline Worker](dist/webWorkers/sharedWorker)
 
 ### [importScripts with callback](dist/webWorkers/importScripts-callback)
