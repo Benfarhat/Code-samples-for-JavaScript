@@ -20,6 +20,7 @@
   # https://eslint.org/docs/user-guide/configuring.html#specifying-globals
   "globals": {
     "SharedArrayBuffer": false,
-    "Atomics": false
+    "Atomics": false,
+    "SIMD": false
   }
 }

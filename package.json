@@ -27,7 +27,8 @@
     "ajax",
     "promise",
     "async",
-    "await"
+    "await",
+    "SIMD"
   ],
   "author": "Benfarhat Elyes <benfarhat.elyes@gmail.com>",
   "license": "MIT",
