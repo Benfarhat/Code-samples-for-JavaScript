@@ -1,1 +1,2 @@
-dist\parallelism\SIMD\ecmascript_simd.js
+dist\lowLevel\SIMD\ecmascript_simd.js
+ecmascript_simd.js

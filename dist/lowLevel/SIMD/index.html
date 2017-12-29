@@ -54,13 +54,16 @@
           position:relative;
           top:2px;
       }
+      p#info{
+        display:none;
+      }
     </style>
   </head>
   <body>
     <h1>SIMD.js Demonstration</h1>
     <div>
       <small>Please enable "console panel" to see result of basic SIMD methods.</small>
-      <p>SIMD.js in action using polyfill: <a href="https://github.com/tc39/ecmascript_simd/blob/master/src/ecmascript_simd.js" target="blank">ecmascript_simd.js</a>
+      <p id="info">SIMD.js in action using polyfill: <a href="https://github.com/tc39/ecmascript_simd/blob/master/src/ecmascript_simd.js" target="blank">ecmascript_simd.js</a>
       <p id="afficheMessages">Is your browser supporting SIMD:</p>
       <textarea id="browser"></textarea>
       <p id="afficheMessages">Simple SIMD operation:</p>

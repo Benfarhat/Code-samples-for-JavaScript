@@ -1,6 +1,7 @@
 var bs = document.querySelector('textarea#browser')
 var tx = document.querySelector('textarea#simple')
 var bm = document.querySelector('textarea#benchmark')
+var info = document.querySelector('p#info')
 var tSIMDStart, tSIMDEnd, tClassicStart, tClassicEnd
 var n1, n2
 var supportSIMD = false
@@ -73,7 +74,7 @@ const main = () => {
   }
 
   bm.textContent += '--------------------WITH RANDOM VALUE---------------------------\n\n' +
-  'Executing 10000 addition with SIMD on random Float32x4:\n'
+  'Executing 10000 additions with SIMD on random Float32x4:\n'
   tSIMDStart = performance.now()
   for (let i = 0; i < 10000; i++) {
     n1 = SIMD.Float32x4(Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10))
@@ -84,7 +85,7 @@ const main = () => {
 
   bm.textContent += 'Finished after ' + tSIMDEnd + ' milliseconds:\n\n'
 
-  bm.textContent += 'Executing 10000 x 4 addition of random scalar:\n'
+  bm.textContent += 'Executing 10000 x 4 (number of lane) additions of random scalar:\n'
   tClassicStart = performance.now()
   for (let i = 0; i < 10000; i++) {
     for (let j = 0; j < 4; j++) {
@@ -97,7 +98,7 @@ const main = () => {
   bm.textContent += 'Finished after ' + tClassicEnd +
   ' milliseconds:\n\n--------------------WITHOUT RANDOM VALUE---------------------------\n\n'
 
-  bm.textContent += 'Executing 1000000 addition with SIMD on SIMD.Float32x4(1,2,3,4):\n'
+  bm.textContent += 'Executing 1000000 additions with SIMD on SIMD.Float32x4(1,2,3,4):\n'
   tSIMDStart = performance.now()
   n1 = SIMD.Float32x4(1, 2, 3, 4)
   n2 = SIMD.Float32x4(1, 2, 3, 4)
@@ -108,13 +109,37 @@ const main = () => {
 
   bm.textContent += 'Finished after ' + tSIMDEnd + ' milliseconds:\n\n'
 
-  bm.textContent += 'Executing 1000000 x 4 addition of random scalar:\n'
+  bm.textContent += 'Executing 1000000 x 4 (number of lane) additions of random scalar:\n'
   tClassicStart = performance.now()
   for (let i = 0; i < 1000000; i++) {
     for (let j = 1; j < 5; j++) {
       n1 = j
       n2 = j
       n1 += n2
+    }
+  }
+  tClassicEnd = performance.now() - tClassicStart
+  bm.textContent += 'Finished after ' + tClassicEnd + ' milliseconds:\n\n'
+  bm.textContent += '................................................\n\n'
+
+  bm.textContent += 'Executing 1000000 multiplications with SIMD on SIMD.Float32x4(1,2,3,4):\n'
+  tSIMDStart = performance.now()
+  n1 = SIMD.Float32x4(1, 2, 3, 4)
+  n2 = SIMD.Float32x4(1, 2, 3, 4)
+  for (let i = 0; i < 1000000; i++) {
+    SIMD.Float32x4.mul(n1, n2)
+  }
+  tSIMDEnd = performance.now() - tSIMDStart
+
+  bm.textContent += 'Finished after ' + tSIMDEnd + ' milliseconds:\n\n'
+
+  bm.textContent += 'Executing 1000000 x 4 (number of lane) multiplications of random scalar:\n'
+  tClassicStart = performance.now()
+  for (let i = 0; i < 1000000; i++) {
+    for (let j = 1; j < 5; j++) {
+      n1 = j
+      n2 = j
+      n1 *= n2
     }
   }
   tClassicEnd = performance.now() - tClassicStart
@@ -152,17 +177,31 @@ const main = () => {
   }
 
   // Splat
-  console.log('Create instance of Int16x8 whare all lane have the same value (16 for example) ' + SIMD.Int16x8.splat(16).toString())
+  console.log('Create instance of Int16x8 where all lane have the same value (16 for example) ' + SIMD.Int16x8.splat(16).toString())
+
+  // Equal and select
+  a = SIMD.Float32x4(2, 5, 9, 7)
+  b = SIMD.Float32x4(4, 5, 2, 7)
+  console.log('Getting wich lane from ' + a.toString() + ' and ' + b.toString() + ' are equal:')
+  var result = SIMD.Float32x4.equal(a, b)
+
+  var zero = SIMD.Float32x4(0, 0, 0, 0)
+
+  var finalResult = SIMD.Float32x4.select(result, a, zero)
+  console.log(finalResult.toString())
 }
 
 if (typeof SIMD === 'undefined') {
-  bs.textContent = 'SIMD not implemented in this browser. You should use another browser like Firefox nightly or Chromium build'
+  bs.textContent = 'SORRY! SIMD is not implemented in this browser. You should use another browser like Firefox nightly or Chromium build'
   bs.textContent += '\nLoading polyfill ecmascript_simd.js'
+  info.style.display = 'block'
   bs.style.borderColor = '#c0392b'
   bm.style.borderColor = '#c0392b'
   loadScript('ecmascript_simd.js', main)
 } else {
-  bs.textContent = 'SIMD is implemented in this browser!'
+  bs.textContent = 'YES! SIMD is implemented in this browser!'
+  bs.textContent += '\nNo need to load SIMD.js polyfill (ecmascript_simd.js)!'
+  info.style.display = 'none'
   bs.style.borderColor = '#27ae60'
   bm.style.borderColor = '#27ae60'
   supportSIMD = true
