@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SIMD Demo</title>
+    <meta charset="UTF-8">
+    <style>
+      *{box-sizing: border-box;}
+      body{
+        margin:0;
+        padding:0;
+      }
+      h1{
+        background-color: #f39c12;
+        color: #fff;
+        padding:8px 16px;
+        margin-top:0;
+      }
+      body > div, footer {
+        padding: 4px 16px;
+      }
+      textarea{
+        width:100%;
+        border:1px solid #f39c12;
+        border-left:16px solid #f39c12;
+        padding:4px 8px 4px 20px;
+        min-height:24em;
+        font-size:0.87em;
+        font-style: italic;
+      }
+      textarea#browser{
+        min-height:6em;
+      }
+      a{
+        background-color:#f39c12;
+        color:#fff;
+        text-decoration: none;
+        padding:4px 10px;
+        color:#FFF;
+        text-decoration:none;
+        border-radius:0;
+        border:solid 1px #f1c40f;
+        text-align:center;
+        -webkit-transition: all 0.1s;
+        -moz-transition: all 0.1s;
+        transition: all 0.1s;
+        -webkit-box-shadow: 0px 4px 0px #888;
+        -moz-box-shadow: 0px 4px 0px #888;
+        box-shadow: 0px 4px 0px #888;
+      }
+      a:active{
+          -webkit-box-shadow: 0px 1px 0px #f39c12;
+          -moz-box-shadow: 0px 1px 0px #f39c12;
+          box-shadow: 0px 1px 0px #f39c12;
+          position:relative;
+          top:2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SIMD.js Demonstration</h1>
+    <div>
+      <small>Please enable "console panel" to see result of basic SIMD methods.</small>
+      <p>SIMD.js in action using polyfill: <a href="https://github.com/tc39/ecmascript_simd/blob/master/src/ecmascript_simd.js" target="blank">ecmascript_simd.js</a>
+      <p id="afficheMessages">Is your browser supporting SIMD:</p>
+      <textarea id="browser"></textarea>
+      <p id="afficheMessages">Simple SIMD operation:</p>
+      <textarea id="simple"></textarea>
+      <p id="afficheMessages">Benchmarking (simples operations, it should be better with more complex stuffs):</p>
+      <textarea id="benchmark"></textarea>
+    </div>
+  <!--
+    No need to load it for the moment, it will be done after checking if your browser support SIMD
+  <script src="ecmascript_simd.js"></script>
+  -->
+  <script src="script.js"></script>
+  </body>
+</html>
